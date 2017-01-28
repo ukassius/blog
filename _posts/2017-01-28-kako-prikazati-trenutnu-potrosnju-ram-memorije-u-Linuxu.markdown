@@ -5,6 +5,8 @@ date:   2017-01-28 18:58:26 +0100
 categories: linux nedim
 ---
 
+## Prikaz preko pseudo datoteke `/proc/meminfo`
+
 Jedan od nacina je koristiti grep alat za filter kljucnih rijeci `MemFree` iz sistemskog fajla `/proc/meminfo`
 
 {% highlight shell %}
@@ -23,7 +25,8 @@ Za prikaz slobodne memorije
 grep MemFree /proc/meminfo
 {% endhighlight %}
 
-FREE KOMANDA
+## FREE KOMANDA
+
 Komanda cesto koristena za prikazivanje trenutne potrosnje RAM memorije je komanda free. 
 
 Primjeri upotrebe:
@@ -65,7 +68,7 @@ Help stranice za free komandu.
 free --help
 {% endhighlight %}
 
-Istraziti
+### Istraziti
 Actual Free Memory
 Actual Free Memory = Free (39 MB) + Buffers (95) + Cached (3590) = 3,724 MB 
 - Cachirana memorije? Kako se racuna? Kako iskljuciti level cachiranja u kernelu?
