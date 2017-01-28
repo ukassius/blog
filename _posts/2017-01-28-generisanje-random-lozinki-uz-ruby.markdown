@@ -19,3 +19,10 @@ Takodjer isti kod mozete pokrenuti direktno iz CLI
 {% highlight shell %}
 ruby -e "puts (0...8).map { (65 + rand(26)).chr }.join"
 {% endhighlight %}
+
+### Drugi primjer
+
+{% highlight ruby %}
+(0...50).map { ('a'..'z').to_a[rand(26)] }.join
+{% endhighlight %}
+
