@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Kako prikazati trenutnu potrosnju RAM memorije?"
+title:  "Linux: Kako prikazati trenutnu potrosnju RAM memorije?"
 date:   2017-01-28 18:58:26 +0100
-categories: linux
+categories: linux, nedim
 ---
 
 Jedan od nacina je koristiti grep alat za filter kljucnih rijeci `MemFree` iz sistemskog fajla `/proc/meminfo`

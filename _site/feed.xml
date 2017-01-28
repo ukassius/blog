@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-28T20:16:54+01:00</updated><id>http://localhost:4000//</id><title type="html">LugZe blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">Generisanje random lozinki iz shella</title><link href="http://localhost:4000/linux/2017/01/28/generisanje-random-lozinki-iz-shella.html" rel="alternate" type="text/html" title="Generisanje random lozinki iz shella " /><published>2017-01-28T20:05:26+01:00</published><updated>2017-01-28T20:05:26+01:00</updated><id>http://localhost:4000/linux/2017/01/28/generisanje-random-lozinki-iz-shella</id><content type="html" xml:base="http://localhost:4000/linux/2017/01/28/generisanje-random-lozinki-iz-shella.html">&lt;p&gt;Generisanje random lozinki iz shella se moze uradit na vise nacina. Ovdje cemo navesti jedan nacin.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;head -c 12 /dev/urandom | base64 
+output: tnS/GSlJVHVjuX61 &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;komanda cita prvih nekoliko linija bilo kojeg datog teksta i ispisuje ih kao standardni output u konzolu&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;head          &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;opcija limitira output na 12 karaktera&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;-c 12         &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;omogucuje interfejs prema kernelovom random generatoru brojeva&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;/dev/urandom     &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;znak pipe prosljedjuje karaktere koje ispise head komanda na standardni output komandi base64&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;znak |        &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;sluzi za kodiranje outputa prethodnog coda komande sa base64, da se dekodira output koristimo base64 -d&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;base64         &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><summary type="html">Generisanje random lozinki iz shella se moze uradit na vise nacina. Ovdje cemo navesti jedan nacin.</summary></entry><entry><title type="html">Kako Prikazati Trenutnu Potrosnju Ram Memorije U Linuxu</title><link href="http://localhost:4000/2017/01/28/kako-prikazati-trenutnu-potrosnju-ram-memorije-u-Linuxu.html" rel="alternate" type="text/html" title="Kako Prikazati Trenutnu Potrosnju Ram Memorije U Linuxu" /><published>2017-01-28T00:00:00+01:00</published><updated>2017-01-28T00:00:00+01:00</updated><id>http://localhost:4000/2017/01/28/kako-prikazati-trenutnu-potrosnju-ram-memorije-u-Linuxu</id><content type="html" xml:base="http://localhost:4000/2017/01/28/kako-prikazati-trenutnu-potrosnju-ram-memorije-u-Linuxu.html">&lt;hr /&gt;
+&lt;p&gt;layout: post
+title:  “Linux: Kako prikazati trenutnu potrosnju RAM memorije?”
+date:   2017-01-28 18:58:26 +0100
+categories: linux, nedim
+—e&lt;/p&gt;
+
+&lt;p&gt;Jedan od nacina je koristiti grep alat za filter kljucnih rijeci &lt;code class=&quot;highlighter-rouge&quot;&gt;MemFree&lt;/code&gt; iz sistemskog fajla &lt;code class=&quot;highlighter-rouge&quot;&gt;/proc/meminfo&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;grep Mem /proc/meminfo&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Za prikaz ukupe RAM memorije&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;grep MemTotal /proc/meminfo&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Za prikaz slobodne memorije&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;grep MemFree /proc/meminfo&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;FREE KOMANDA
+Komanda cesto koristena za prikazivanje trenutne potrosnje RAM memorije je komanda free.&lt;/p&gt;
+
+&lt;p&gt;Primjeri upotrebe:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Prikaz potrosnje u Gigabajtima&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free -g&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Prikazm potrosnje u formatu lakse citljivom za covjeka tzv human&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free -g -h&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Total odnosno zbirni prikaz kolicine RAM memorije i velcine swap particije&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free -g -h -t&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Opcija -o izbacuje prikaz linije “buffer adjusted”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free -g -h -o&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Zbog lakseg koristenja format pisanja se moze pojednostaviti u sljedeci&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free -ghto&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Help stranice za free komandu.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;free --help&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Istraziti
+Actual Free Memory
+Actual Free Memory = Free (39 MB) + Buffers (95) + Cached (3590) = 3,724 MB&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cachirana memorije? Kako se racuna? Kako iskljuciti level cachiranja u kernelu?&lt;/li&gt;
+&lt;/ul&gt;</content><summary type="html">layout: post
+title:  “Linux: Kako prikazati trenutnu potrosnju RAM memorije?”
+date:   2017-01-28 18:58:26 +0100
+categories: linux, nedim
+—e</summary></entry></feed>
