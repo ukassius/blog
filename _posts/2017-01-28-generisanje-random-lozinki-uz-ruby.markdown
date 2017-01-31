@@ -106,3 +106,9 @@ ruby -e "puts (0...8).map { (65 + rand(26)).chr }.join"
 (0...50).map { ('a'..'z').to_a[rand(26)] }.join
 {% endhighlight %}
 
+
+### Treci primjer
+
+{% highlight ruby %}
+charset = [*'a'..'z', *'A'..'Z'].sample(30).join
+{% endhighlight %}
