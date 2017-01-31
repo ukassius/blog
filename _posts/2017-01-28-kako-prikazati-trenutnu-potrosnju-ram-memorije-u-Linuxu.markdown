@@ -146,8 +146,3 @@ Options:
 
 For more details see free(1).
 {% endhighlight %}
-
-### Istraziti
-Actual Free Memory
-Actual Free Memory = Free (39 MB) + Buffers (95) + Cached (3590) = 3,724 MB 
-- Cachirana memorije? Kako se racuna? Kako iskljuciti level cachiranja u kernelu?

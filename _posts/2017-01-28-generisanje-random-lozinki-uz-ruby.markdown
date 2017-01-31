@@ -88,6 +88,8 @@ Slican primjer ali ovaj put sa opsegom brojeva od `0` do `99`.
 ### Nekoliko primjera kako pomocu `Ruby` generisati random lozinke
 
 
+#### Prvi primjer
+
 Pokrenute IRB pomocu komande `irb` zatim prekucajte kod ispod
 
 {% highlight ruby %}
@@ -100,14 +102,14 @@ Takodjer isti kod mozete pokrenuti direktno iz CLI
 ruby -e "puts (0...8).map { (65 + rand(26)).chr }.join"
 {% endhighlight %}
 
-### Drugi primjer
+#### Drugi primjer
 
 {% highlight ruby %}
 (0...50).map { ('a'..'z').to_a[rand(26)] }.join
 {% endhighlight %}
 
 
-### Treci primjer
+#### Treci primjer
 
 {% highlight ruby %}
 charset = [*'a'..'z', *'A'..'Z'].sample(30).join
