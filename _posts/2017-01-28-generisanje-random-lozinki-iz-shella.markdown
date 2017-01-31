@@ -1,18 +1,19 @@
 ---
 layout: post
 title:  "Generisanje random lozinki iz shella "
+author: admeer
 date:   2017-01-28 20:05:26 +0100
 categories: linux
 ---
 
-Generisanje random lozinki iz shella se moze uradit na vise nacina. Ovdje cemo navesti jedan nacin. 
+Generisanje random lozinki iz shella se moze uradit na vise nacina. Ovdje cemo navesti jedan nacin.
 
 {% highlight shell %}
-head -c 12 /dev/urandom | base64 
-output: tnS/GSlJVHVjuX61 
+head -c 12 /dev/urandom | base64
+output: tnS/GSlJVHVjuX61
 {% endhighlight %}
 
-komanda cita prvih nekoliko linija bilo kojeg datog teksta i ispisuje ih kao standardni output u konzolu 
+komanda cita prvih nekoliko linija bilo kojeg datog teksta i ispisuje ih kao standardni output u konzolu
 {% highlight shell %}
 head          
 {% endhighlight %}
@@ -37,4 +38,3 @@ sluzi za kodiranje outputa prethodnog coda komande sa base64, da se dekodira out
 {% highlight shell %}
 base64         
 {% endhighlight %}
-
