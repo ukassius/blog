@@ -8,17 +8,17 @@ categories: ruby
 
 Otkriti novi nacin generisanja nasumicne lozinke mi je uvijek bio od interesa.
 
-## Random methoda
+## Random Metoda
 
-Primjeri iz ovog clanka koriste Random methodu/funkciju koja o kojoj mozete vise procitati [ovdje](https://ruby-doc.org/core-2.4.0/Random.html). Ovu methodu mozemo testirati tako
-sto cemo generisati nasumicni broj. Pokrenite IRB pomocu komande `irb` zatim pozovite `rand` methodu.
+Primjeri iz ovog clanka koriste Random metodu/funkciju koja o kojoj mozete vise procitati [ovdje](https://ruby-doc.org/core-2.4.0/Random.html). Ovu metodu mozemo testirati tako
+sto cemo generisati nasumicni broj. Pokrenite IRB pomocu komande `irb` zatim pozovite `rand` metodu.
 
 {% highlight ruby %}
 rand
  => 0.8270045384707297 
 {% endhighlight %}
 
-Po defaultu rand vraca decimale a ako methodi dodijelimo argument u vidu broja onda ce rand generisati broj od nule sve do tog broja, ne ukljucujuci broj koji smo naveli kao argument.
+Po defaultu rand vraca decimale a ako metodi dodijelimo argument u vidu broja onda ce rand generisati broj od nule sve do tog broja, ne ukljucujuci broj koji smo naveli kao argument.
 
 {% highlight ruby %}
 rand 200
@@ -44,7 +44,7 @@ rand 100..400
 
 U ovom primjeru `rand` je generisao nasumicni broj `295`.
 
-## Sample methoda
+## Sample Metoda
 
 Ovu metodu mozemo koristiti ako zelimo da izaberemo nasumicno broj iz zadane liste. U ovom primjeru `sample` metoda ce izabrati nasumicno broj iz liste `[2, 5, 15, 40, 20, 11]`.
 
