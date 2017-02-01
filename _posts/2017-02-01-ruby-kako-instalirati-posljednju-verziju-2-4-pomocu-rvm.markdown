@@ -19,7 +19,7 @@ apt-get install curl sudo
 {% endhighlight %}
 
 
-Slijede upute kako dodati novog korisnika sa usernameom ruby te unuta home direktorija navedenog korisnika instalirati posljednju ruby verziju.
+Slijede upute kako dodati novog korisnika sa usernameom `ruby` te unuta home direktorija navedenog korisnika instalirati posljednju ruby verziju.
 
 
 Dodajemo korinsika ruby
@@ -34,9 +34,17 @@ Dodajemo novog clana grupi sudo
 usermod --append --groups sudo ruby
 {% endhighlight %}
 
-Potrebno je doda
+Sljedeci korak je logovanje kao korisnik `ruby`.
+
+{% highlight shell %}
+su ruby -l
+{% endhighlight %}
+
+
 
 ## Instaliranje RVM
+
+Sljedeci koraci se izvrsavaju dok ste prijavljeni kao `ruby` korisnik.
 
 {% highlight shell %}
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -68,4 +76,12 @@ Provjeriti instaliranu verziju ruby.
 
 {% highlight shell %}
 ruby -v
+{% endhighlight %}
+
+U slucaju da imate vec instaliran RVM komande za instaalciju 2.4 verzije te postavljanje iste kao trenutnu i default verziju su.
+
+{% highlight shell %}
+rvm install ruby-2.4.0
+rvm --default use 2.4.0
+rvm use 2.4.0
 {% endhighlight %}
