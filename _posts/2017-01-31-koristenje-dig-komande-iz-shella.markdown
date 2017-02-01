@@ -26,65 +26,20 @@ apt-get install dnsutils
 Dig bez argumenata dat ce listu root servera
 
 {% highlight shell %}
-$ dig
-
-; <<>> DiG 9.10.3-P4-Ubuntu <<>>
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59928
-;; flags: qr rd ra; QUERY: 1, ANSWER: 13, AUTHORITY: 0, ADDITIONAL: 26
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;.				IN	NS
-
-;; ANSWER SECTION:
-.			89460	IN	NS	d.root-servers.net.
-.			89460	IN	NS	c.root-servers.net.
-.			89460	IN	NS	m.root-servers.net.
-.			89460	IN	NS	e.root-servers.net.
-.			89460	IN	NS	j.root-servers.net.
-.			89460	IN	NS	b.root-servers.net.
-.			89460	IN	NS	k.root-servers.net.
-.			89460	IN	NS	i.root-servers.net.
-.			89460	IN	NS	a.root-servers.net.
-.			89460	IN	NS	h.root-servers.net.
-.			89460	IN	NS	g.root-servers.net.
-.			89460	IN	NS	l.root-servers.net.
-.			89460	IN	NS	f.root-servers.net.
-
-;; ADDITIONAL SECTION:
-a.root-servers.net.	22599	IN	A	198.41.0.4
-a.root-servers.net.	450101	IN	AAAA	2001:503:ba3e::2:30
-b.root-servers.net.	171388	IN	A	192.228.79.201
-b.root-servers.net.	428118	IN	AAAA	2001:500:84::b
-c.root-servers.net.	599099	IN	A	192.33.4.12
-c.root-servers.net.	428118	IN	AAAA	2001:500:2::c
-d.root-servers.net.	162826	IN	A	199.7.91.13
-d.root-servers.net.	428118	IN	AAAA	2001:500:2d::d
-e.root-servers.net.	162826	IN	A	192.203.230.10
-e.root-servers.net.	428118	IN	AAAA	2001:500:a8::e
-f.root-servers.net.	162826	IN	A	192.5.5.241
-f.root-servers.net.	162826	IN	AAAA	2001:500:2f::f
-g.root-servers.net.	162826	IN	A	192.112.36.4
-h.root-servers.net.	504808	IN	A	198.97.190.53
-h.root-servers.net.	162826	IN	AAAA	2001:500:1::53
-i.root-servers.net.	504808	IN	A	192.36.148.17
-i.root-servers.net.	162826	IN	AAAA	2001:7fe::53
-j.root-servers.net.	162826	IN	A	192.58.128.30
-j.root-servers.net.	162826	IN	AAAA	2001:503:c27::2:30
-k.root-servers.net.	162826	IN	A	193.0.14.129
-k.root-servers.net.	162826	IN	AAAA	2001:7fd::1
-l.root-servers.net.	162826	IN	A	199.7.83.42
-l.root-servers.net.	334494	IN	AAAA	2001:500:9f::42
-m.root-servers.net.	146326	IN	A	202.12.27.33
-m.root-servers.net.	150154	IN	AAAA	2001:dc3::35
-
-;; Query time: 13 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Tue Jan 31 18:04:30 CET 2017
-;; MSG SIZE  rcvd: 783
+$ dig +short
+j.root-servers.net.
+g.root-servers.net.
+l.root-servers.net.
+c.root-servers.net.
+e.root-servers.net.
+f.root-servers.net.
+h.root-servers.net.
+i.root-servers.net.
+m.root-servers.net.
+d.root-servers.net.
+a.root-servers.net.
+b.root-servers.net.
+k.root-servers.net.
 
 {% endhighlight %}
 
@@ -178,89 +133,24 @@ dnsnode.debian.org.	86400	IN	AAAA	2001:67c:1010:32::53
 ###### Dobijanje bilo kojih postavki
 
 {% highlight shell %}
-$ dig any debian.org
-
-; <<>> DiG 9.10.3-P4-Ubuntu <<>> any debian.org
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43796
-;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 3, ADDITIONAL: 7
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;debian.org.			IN	ANY
-
-;; ANSWER SECTION:
-debian.org.		22362	IN	NS	sec2.rcode0.net.
-debian.org.		22362	IN	NS	dnsnode.debian.org.
-debian.org.		22362	IN	NS	sec1.rcode0.net.
-
-;; AUTHORITY SECTION:
-debian.org.		22362	IN	NS	dnsnode.debian.org.
-debian.org.		22362	IN	NS	sec1.rcode0.net.
-debian.org.		22362	IN	NS	sec2.rcode0.net.
-
-;; ADDITIONAL SECTION:
-sec1.rcode0.net.	243896	IN	A	192.174.68.100
-sec1.rcode0.net.	243896	IN	AAAA	2001:67c:1bc::100
-sec2.rcode0.net.	156164	IN	A	176.97.158.100
-sec2.rcode0.net.	156164	IN	AAAA	2001:67c:10b8::100
-dnsnode.debian.org.	18031	IN	A	194.146.106.126
-dnsnode.debian.org.	18031	IN	AAAA	2001:67c:1010:32::53
-
-;; Query time: 20 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Tue Jan 31 18:06:58 CET 2017
-;; MSG SIZE  rcvd: 728
-
+$ dig +short any debian.org
+sec1.rcode0.net.
+dnsnode.debian.org.
+sec2.rcode0.net.
 {% endhighlight %}
 
 ###### Dobijanje MX recorda za debian.org
 
-
 {% highlight shell %}
-$ dig mx debian.org
-
-; <<>> DiG 9.10.3-P4-Ubuntu <<>> mx debian.org
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44681
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 3, ADDITIONAL: 9
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;debian.org.			IN	MX
-
-;; ANSWER SECTION:
-debian.org.		28692	IN	MX	0 muffat.debian.org.
-debian.org.		28692	IN	MX	0 mailly.debian.org.
-
-;; AUTHORITY SECTION:
-debian.org.		28692	IN	NS	dnsnode.debian.org.
-debian.org.		28692	IN	NS	sec2.rcode0.net.
-debian.org.		28692	IN	NS	sec1.rcode0.net.
-
-;; ADDITIONAL SECTION:
-mailly.debian.org.	3492	IN	A	82.195.75.114
-mailly.debian.org.	3492	IN	AAAA	2001:41b8:202:deb:6564:a62:52c3:4b72
-muffat.debian.org.	3492	IN	A	209.87.16.33
-muffat.debian.org.	3492	IN	AAAA	2607:f8f0:614:1::1274:33
-sec1.rcode0.net.	30033	IN	A	192.174.68.100
-sec1.rcode0.net.	30033	IN	AAAA	2001:67c:1bc::100
-sec2.rcode0.net.	109157	IN	A	176.97.158.100
-sec2.rcode0.net.	109157	IN	AAAA	2001:67c:10b8::100
-
-;; Query time: 91 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Tue Jan 31 18:08:46 CET 2017
-;; MSG SIZE  rcvd: 331
-
+$ dig +short mx debian.org
+0 mailly.debian.org.
+0 muffat.debian.org.
 {% endhighlight %}
 
 **OBJASNJENJE**
 
+###### Koristenje komande dig bez *+short* opcije
+###### Kada se korisit +short opcija dobija se samo dio iz ANSWER SECTION
 
 *QUESTION SECTION*
 
@@ -273,79 +163,21 @@ Unutar odjeljka mozemo vidjeti odgovor za trazeni upit.
 ##### Dobijanje NS servera za debian.org
 
 {% highlight shell %}
-$ dig ns debian.org
-
-; <<>> DiG 9.10.3-P4-Ubuntu <<>> ns debian.org
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 2519
-;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 7
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;debian.org.			IN	NS
-
-;; ANSWER SECTION:
-debian.org.		21167	IN	NS	sec1.rcode0.net.
-debian.org.		21167	IN	NS	dnsnode.debian.org.
-debian.org.		21167	IN	NS	sec2.rcode0.net.
-
-;; ADDITIONAL SECTION:
-sec1.rcode0.net.	242701	IN	A	192.174.68.100
-sec1.rcode0.net.	242701	IN	AAAA	2001:67c:1bc::100
-sec2.rcode0.net.	154969	IN	A	176.97.158.100
-sec2.rcode0.net.	154969	IN	AAAA	2001:67c:10b8::100
-dnsnode.debian.org.	16836	IN	A	194.146.106.126
-dnsnode.debian.org.	16836	IN	AAAA	2001:67c:1010:32::53
-
-;; Query time: 10 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Tue Jan 31 18:26:53 CET 2017
-;; MSG SIZE  rcvd: 241
-
-{% endhighlight %}
-
-##### Dobijanje A recorda za www.debian.org
-
-{% highlight shell %}
-$ dig ns debian.org
-
-; <<>> DiG 9.10.3-P4-Ubuntu <<>> ns debian.org
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10740
-;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 7
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;debian.org.			IN	NS
-
-;; ANSWER SECTION:
-debian.org.		22054	IN	NS	sec1.rcode0.net.
-debian.org.		22054	IN	NS	dnsnode.debian.org.
-debian.org.		22054	IN	NS	sec2.rcode0.net.
-
-;; ADDITIONAL SECTION:
-sec1.rcode0.net.	243588	IN	A	192.174.68.100
-sec1.rcode0.net.	243588	IN	AAAA	2001:67c:1bc::100
-sec2.rcode0.net.	155856	IN	A	176.97.158.100
-sec2.rcode0.net.	155856	IN	AAAA	2001:67c:10b8::100
-dnsnode.debian.org.	17723	IN	A	194.146.106.126
-dnsnode.debian.org.	17723	IN	AAAA	2001:67c:1010:32::53
-
-;; Query time: 12 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Tue Jan 31 18:12:06 CET 2017
-;; MSG SIZE  rcvd: 241
-{% endhighlight %}
-
-##### Dobijanje kratkih odgovora
-
-{% highlight shell %}
 $ dig +short ns debian.org
 dnsnode.debian.org.
 sec1.rcode0.net.
 sec2.rcode0.net.
 {% endhighlight %}
+
+##### Dobijanje A recorda za www.debian.org
+
+{% highlight shell %}
+$ dig +short a debian.org
+5.153.231.4
+140.211.15.34
+128.31.0.62
+130.89.148.14
+{% endhighlight %}
+
+
+
