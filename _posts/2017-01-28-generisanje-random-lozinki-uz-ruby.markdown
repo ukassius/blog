@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ruby: Kako generisati random lozinku pomocu Ruby programskog jezika"
+title:  "Ruby: Kako generisati random lozinki"
 author: nedim
 date:   2017-01-28 21:07:26 +0100
 categories: ruby
