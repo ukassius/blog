@@ -4,4 +4,4 @@ title: Arhiva
 permalink: /arhiva/
 ---
 
-Arhiva stare stranice se nalazi na ovom linku.
+Arhiva stare stranice se nalazi na ovom [linku](http://archive.lugze.org/).
