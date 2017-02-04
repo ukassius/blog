@@ -2,7 +2,7 @@
 layout: post
 title:  "Reaktiviranje stranice"
 date:   2017-01-27 17:55:20 +0100
-categories: linux
+categories: blog
 ---
 
 Nakon vise od 10 godina minimalne aktivnosti odlucili smo ponovo aktivirati web stranicu.
