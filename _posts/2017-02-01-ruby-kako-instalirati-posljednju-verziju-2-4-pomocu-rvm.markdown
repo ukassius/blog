@@ -70,6 +70,12 @@ U slucaju da grep ne vrati rezultate potrebno je ozvrsiti komandu ispod koja dod
 echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
 {% endhighlight %}
 
+Sada je potrebno ucitati nove postavke
+
+{% highlight shell %}
+source ~/.bashrc
+{% endhighlight %}
+
 ## Podesavanje i testiranje
 
 Provjeriti instaliranu verziju ruby.
