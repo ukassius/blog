@@ -55,7 +55,7 @@ U slucaju da key ne radi novi mozete pokupiti na ovom [linku](https://rvm.io/). 
 
 
 {% highlight shell %}
-`source /home/ruby/.rvm/scripts/rvm`
+`source ~/.rvm/scripts/rvm`
 {% endhighlight %}
 
 Provjeriti da li je dodan zapis koji automatski loada RVM prilikom logozanja korisnika
