@@ -9,6 +9,12 @@ twitter_username: lugze
 github_username:  lugze
 
 # Build settings
+
+## Permalink
+permalink: /:categories/:year/:title.html
+
+## Markdown
+
 markdown: kramdown
 theme: minima
 gems:
