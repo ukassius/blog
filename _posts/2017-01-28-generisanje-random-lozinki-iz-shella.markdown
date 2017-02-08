@@ -9,6 +9,11 @@ categories: linux
 Generisanje random lozinki iz shella se moze uradit na vise nacina. Ovdje cemo navesti jedan nacin.
 
 {% highlight shell %}
+head --bytes 22 /dev/urandom | base64
+output: HnaDkOg1bz761p02KAWCECh5hO+LmA==
+{% endhighlight %}
+ili
+{% highlight shell %}
 head -c 12 /dev/urandom | base64
 output: tnS/GSlJVHVjuX61
 {% endhighlight %}
@@ -19,7 +24,7 @@ head
 {% endhighlight %}
 
 
-opcija limitira output na 12 karaktera
+opcija limitira output na 12 bytes
 {% highlight shell %}
 -c 12         
 {% endhighlight %}
