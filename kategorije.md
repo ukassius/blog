@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Kategorije
+permalink: /kategorije/
 ---
 
 <p>Postovi iz kategorije "linux" su:</p>
