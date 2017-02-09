@@ -91,3 +91,26 @@ rvm install ruby-2.4.0
 rvm --default use 2.4.0
 rvm use 2.4.0
 {% endhighlight %}
+
+
+### Koje postavke kontrolise RVM?
+
+RVM postavlja nove `environment` varijable od kojih su najvaznije `MY_RUBY_HOME`, GEM_HOME`, `RUBY_VERSION` te modificira postojecu varijablu `PATH`. Trenutno postavljene vrijednosti navedenih varijabli mozemo provjeriti sa komandama u nastavku.
+
+{% highlight shell %}
+ echo $RUBY_VERSION
+{% endhighlight %}
+
+{% highlight shell %}
+echo $GEM_HOME
+{% highlight shell %}
+
+{% highlight shell %}
+echo $MY_RUBY_HOME
+{% highlight shell %}
+
+Ako zelimo provjeriti sve `environment` varijable koje sadrze string `ruby` mozemo koristiti komandu ispod.
+
+{% highlight shell %}
+printenv | grep ruby
+{% highlight shell %}
