@@ -1,13 +1,85 @@
-* sta je RAID, svrha
+---
+layout: post
+title:  "Uvod u RAID"
+author: ermis
+date:   2017-02-04 12:27:26 +0100
+categories: linux
+tags:
+- linux
+- raid
+---
+
+## Šta Je RAID i Njegova Svrha
 
 Da počnemo od početka -- RAID: "redundant array of independent disks", ili "niz nezavisnih suvišnih diskova". Sam pojam "suvišnih" ili "redundantnih" već navodi na primarnu svrhu RAID tehnologije -- očuvanje podataka (data redundancy).
 
-RAID je tehnologija smještanja podataka na niz diskova na serveru (tvrdi disk, ili u posljednje vrijeme solid state -- SSD) sa ciljem očuvanja podataka u slučaju kvara na jednom od uređaja. Zamislite da sve podatke čuvate na jednom disku -- pojavi li se kakav problem (kvar na pojedinim sektorima na disku, ili na disku cjelosti) svi podaci će biti izgubljeni. Sa RAID tehnologijama, ukoliko se na jednom od diskova pojavi problem, što je česta pojava sa tvrdim diskovima, podaci su i dalje dostupni.
+RAID je tehnologija smještanja podataka na niz diskova na serveru (tvrdi disk, ili u posljednje vrijeme solid state -- SSD) sa ciljem očuvanja podataka u slučaju kvara na jednom od uređaja. Zamislite da sve podatke čuvate na jednom disku -- pojavi li se kakav problem, što je česta pojava sa tvrdim diskovima (kvar na pojedinim sektorima na disku, ili na disku u cjelosti), svi podaci će biti izgubljeni. Sa RAID tehnologijama, ukoliko se na jednom od diskova pojavi problem, podaci su i dalje dostupni.
 
 Druga namjena RAID tehnologija je povećanje učinkovitosti (performance). Nije isto ako istovremeno pristupate podacima sa jednog diska, ili sa više njih paralelno. Podaci se na diskove mogu smjestiti, rasporediti na takav način da se omogući čak deseterostruko brži pristup (čitanje ili pisanje) podacima.
 
-Izmjena pokvarenog diska u RAID nizu obično ne zahtijeva čak ni prekid u dostupnosti (availability) podataka. Ostali diskovi u nizu će poslužiti kao zamjena dok se kvaran disk ne zamijeni. Uporedite to sa smještanjem podataka na jednom disku -- podaci postanu nedostupni u potpunosti, sve dok ih ne povratimo iz pričuve (backup).
+Izmjena pokvarenog diska u RAID nizu obično ne zahtijeva čak ni prekid u dostupnosti (availability) podataka. Ostali diskovi u nizu će poslužiti kao zamjena dok se pokvareni disk ne zamijeni. Uporedite to sa smještanjem podataka na jednom disku -- podaci postanu nedostupni u potpunosti, sve dok ih ne povratimo iz pričuve (backup).
 
-* RAID nivoi
+## Termini u RAID Tehnologijama
 
-RAID tehnologije ispunjavaju navedene namjene kroz različite "nivoe" ili "razine" (levels). Neki od njih pružaju veću sigurnost u očuvanju podataka, drugi veću učinkovitost, ili čak oboje. 
+RAID tehnologije ispunjavaju navedene namjene kroz različite "nivoe" ili "razine" (levels). Neki od njih pružaju veću sigurnost u očuvanju podataka, drugi veću učinkovitost, ili čak oboje. Krenimo redom, spomenimo prvo osnovne pojmove u RAID tehnologijama.
+
+### Mirroring
+Princip kopiranja podataka (mirroring) predstavlja čuvanje jednog te istog seta podataka (obično jedan blok) na dva ili više diskova. Ovaj princip povećava sigurnost očuvanja podataka (redundancy) jer se isti set podataka nalazi na više diskova, pa se može pretrpjeti gubitak jednog diska.
+
+### Striping
+Redanje setova podataka u nizove ili trake (stripe) preko dva ili više diskova predstavlja princip nizanja (striping). Ova metoda smještanja podataka pruža povećanu učinkovitost, jer se određeni set podataka može učitati paralelno sa više diskova istovremeno.
+
+### Parity
+Paritet (parity) je princip izračunavanja pouzdanosti određenog seta podataka. Prilikom zapisivanja podataka, za svaki set (blok) izračunava se paritet i zapisuje u posebne, paritetne blokove. Prilikom čitanja, uspoređuje se paritet seta podataka sa zapisanom vrijednošću. Ukoliko dođe do izmjene, zbog kvara ili bilo kakve greške, paritet neće biti isti, pa se tako može odrediti pouzdanost podataka u tom setu. Princip pariteta povećava pouzdanost smještanja podataka (reliability).
+
+### Fault Tolerance
+Otpornost na kvarove (fault tolerance) predstavlja mjeru pouzdanosti nekog RAID niza. Obično se izražava u broju diskova koji se mogu pokvariti bez posljedica za podatke smještene na RAID nizu.
+
+## RAID 0
+RAID nivo 0 predstavlja nizanje (striping) blokova podataka na dva ili više diskova. Blokovi se nižu prema rasporedu diskova, kao na slici. Ovaj nivo karakterizira:
+ - Povećana brzina pristupa: podacima se može pristupiti paralelno sa više diskova u isto vrijeme
+ - Nema redundancije: nema kopiranja blokova (mirroring), nema računanja pariteta (parity)
+ - Nikakva otpornost na kvarove
+ - Potrebna najmanje 2 diska
+ - Generalno neupotrebljivo za rad
+
+## RAID 1
+Ovaj nivo RAID tehnologije predstavlja jednostavno kopiranje podataka na dva ili više diskova (mirroring). Više kopija garantira veću sigurnost očuvanja podataka, ali ne pruža veću učinkovitost.
+ - Dobra brzina pristupa: nema nizanja (striping) niti računanja pariteta
+ - Odlična redundancija: podaci su kopirani na više mjesta
+ - Otpornost: n-1 diskova, bitno je da barem jedan disk ostane ispravan
+ - Najmanje 2 diska su potrebna
+
+## RAID 10
+Ovdje se zapravo radi o kombinaciji prva dva nivoa: 1 + 0. Dakle, podaci se repliciraju/kopiraju između diskova (mirroring) i nižu kroz grupe (striping). Samim tim što su potrebna minimalno dva diska za kopiranje, a onda minimalno dvije grupe kopiranih (mirrored) diskova da biste nizali podatke, za RAID 10 vam je potrebno minimalno 4 diska.
+ - Odlična redundancija: podaci su kopirani
+ - Odlična učinkovitost: podaci su nizani po diskovima, moguće je paralelno pristupati
+ - Potrebna najmanje 4 diska
+ - Otpornost: 1 disk
+ - Optimalan izbor za očuvanje podataka i brzinu pristupa na produkcijskim sistemima
+
+## RAID 2
+Kod ovog nivoa podaci se smještaju u nizove bitova (bit-level striping) preko dva ili više diskova. Za svaki disk dodatno se postavlja drugi disk koji sadrži polja za kontrolu greške (error correction codes). Pri zapisivanju podataka, izračunava se vrijednost za kontrolu greške i smješta u polje na datom kontrolnom disku. Pri čitanju, ista vrijednost se izračunava i uspoređuje sa kontrolnim poljem. Pritom se eventualne greške ispravljaju. Prilično je neučinkovit pristup, računanje kontrolnih vrijednosti smanjuje brzinu pristupa podacima i efikasnost, a broj diskova potrebnih za primjenu ovog RAID nivoa povećava troškove.
+
+## RAID 3
+RAID nivo 3 predstavlja nizanje bajtova podataka (byte-level striping) preko dva ili više diskova, sa dodatnim zasebnim diskom za smještanje paritetnih blokova. Diskovi za smještanje podataka se moraju vrtiti sinhronizirano. Učinkovito je za sekvencijalno (sequential) čitanje i pisanje podataka, ali ne za nasumično (random). Ne primjenjuje se u praksi.
+
+## RAID 4
+Isto kao i nivo 3, RAID nivo 4 niže podatke preko diskova, ali u blokovima (block-level striping). Zaseban disk sadrži paritetne blokove, isto kao i za nivo 3. Čitanje podataka je dosta brzo, međutim za svaku izmjenu i pisanje podataka mora se ažurirati paritet, pa paritetni disk često postane zagušen. Ni ovaj nivo se ne primjenjuje u praksi.
+
+## RAID 5
+Poput RAID 4, nivo 5 zapisuje podatke u nizove blokova, ali paritetne blokove raspoređuje između diskova u RAID nizu. Najmanje tri diska su potrebna za primjenu ovog nivoa.
+ - Dobra učinkovitost: podaci su nanizani pa se mogu čitati paralelno
+ - Dobra redundancija: u slučaju kvara, paritetni blokovi se koriste za ispravku grešaka u podacima
+ - Otpornost: 1 disk
+ - Najisplatnija opcija u pogledu učinkovitosti i sigurnosti podataka, s obzirom na broj diskova
+
+## RAID 6
+Ovaj nivo je identičan RAID 5, s tim da ima dodatni paritetni blok. Posebna prednost jeste da može podnijeti kvar na dva diska istovremeno, zbog dvostrukog pariteta.
+
+## Praktična Primjena
+U praksi se danas najviše primjenjuju RAID 5 i RAID 10. RAID 5 se primjenjuje kao isplatnija opcija, u sistemima gdje je cijena svakog diska bitna -- npr. pri korištenju SSD diskova. Oba RAID nivoa pružaju dobru otpornost na kvarove, jedan od diskova u nizu može se pokvariti bez posljedica na pouzdanost podataka. Bitno je napomenuti da RAID 10 može pretrpjeti kvar dva diska, u slučaju da su oba diska kopije (mirrors) drugih diskova, tj. da ne dijele isti set podataka.
+
+RAID niz se može složiti hardverski (hardware array), gdje se koristi zaseban upravljački uređaj (controller interface device) na koji se povežu diskovi. Uređaj sam vrši organizaciju diskova u zadati RAID niz, a konfiguracija uređaja se vrši pomoću konfiguracijskih programa. Primjerice, na GNU/Linux sistemima se za Adaptec RAID upravljače koristi "arcconf", a za 3ware upravljače "twcli".
+
+Postoje i softverski RAID nizovi (software array), kojima upravlja sam operativni sistem. GNU/Linux sistemi imaju mogućnost formiranja RAID nizova od diskova koji su priključeni na portove na matičnoj ploči. Konfiguracija se vrši pomoću upravljačkog programa "mdadm".
