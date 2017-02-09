@@ -67,6 +67,42 @@ Za vecinu procesa to ce biti / putanja osim ako se process ne pokrene preko chro
 proces mozemo zavarati da je putanja do root foldra negdje drugo.
 * `ls /proc/PID/task` - direktorij koji sadrzi hard linkove do taskova koji su pokrenuti od strane ovog procesa - parent proces.
 
+
+
+
+
+## Mountiranje proc-a
+
+Proc se automatski mounta prilikom bootanja sistema na lokaciju `/proc` pomocu zapisa koji se nalazi u konfiguracijskom fajlu `/etc/fstab`. Sadrzaj te datoteke mozemo jednostavno izlistati pomocu grep komande.
+
+{% highlight shell %}
+grep proc /etc/fstab
+{% endhighlight %}
+
+### Mountanje u proc u direktorij po zelji
+
+Proc iz RAMA mozemo mountati u bilo koji direktorij na hard disku. To cinimo na sljedeci nacin.
+
+* Napravite direktorij u koji cemo mountati proc
+
+{% highlight shell %}
+ mkdir /mnt/proc
+{% endhighlight %}
+
+* Izvrisite mount proc-a iz RAMA u `/mnt/proc`
+
+{% highlight shell %}
+mount -t proc none /mnt/proc
+{% endhighlight %}
+
+* Sadrzaj `/mnt/proc` direktorija sada cemo provjeriti sa komandom `ls` te porediti sa defaultnim `proc` direktorijem
+
+{% highlight shell %}
+ls /mnt/proc
+ls /proc
+{% endhighlight %}
+
+
 ## Primjeri
 
 #### Kako saznati informacije o procesoru?
