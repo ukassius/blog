@@ -73,6 +73,10 @@ proces mozemo zavarati da je putanja do root foldra negdje drugo.
 
 ## Mountiranje proc-a
 
+U ovom dijelu cemo opisati gdje se nalazi defaultna sistemska okacija za proc te kako proc mountirati u direktorij po zelji.
+
+### Defaultna mount lokacija
+
 Proc se automatski mounta prilikom bootanja sistema na lokaciju `/proc` pomocu zapisa koji se nalazi u konfiguracijskom fajlu `/etc/fstab`. Sadrzaj te datoteke mozemo jednostavno izlistati pomocu grep komande.
 
 {% highlight shell %}
