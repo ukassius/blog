@@ -102,6 +102,11 @@ ls /mnt/proc
 ls /proc
 {% endhighlight %}
 
+* Nakon zavrsene vjezbe potrebno je uraditi `unmount`
+
+{% highlight shell %}
+unmount /mnt/proc
+{% endhighlight %}
 
 ## Primjeri
 
