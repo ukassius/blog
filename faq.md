@@ -1,7 +1,7 @@
 ---
 layout: page
-title: FAQa
-permalink: /fax/
+title: FAQ
+permalink: /faq/
 ---
 
 ## FAQ - Cesto Postavljana Pitanja
